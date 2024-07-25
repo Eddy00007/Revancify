@@ -43,6 +43,28 @@
             }
         }
     },
+    "Eddy-twitter": 
+    {
+        "projectName": "Eddy-Twitter",
+        "sources": 
+        {
+            "cli":
+            {
+                "org": "revanced",
+                "repo": "revanced-cli"
+            },
+            "patches":
+            {
+                "org": "Eddy00007",
+                "repo": "piko"
+            },
+            "integrations":
+            {
+                "org": "crimera",
+                "repo": "revanced-integrations"
+            }
+        }
+    },
     "YT-Advanced": 
     {
         "projectName": "ReX",
