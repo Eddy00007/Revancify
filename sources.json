@@ -109,6 +109,28 @@
             }
         }
     },
+    "Eddy-rvx test": 
+    {
+        "projectName": "Eddy Test-ESP-Revanced-Extended",
+        "sources": 
+        {
+            "cli":
+            {
+                "org": "inotia00",
+                "repo": "revanced-cli"
+            },
+            "patches":
+            {
+                "org": "Eddy00007",
+                "repo": "revanced-patches"
+            },
+            "integrations":
+            {
+                "org": "inotia00",
+                "repo": "revanced-integrations"
+            }
+        }
+    },
     "kitadai31": 
     {
         "projectName": "RVX-Android_6-7",
