@@ -14,7 +14,7 @@ if [ -z "$TERMUX_VERSION" ]; then
 fi
 
 if [ -d "$HOME/Revancify1" ]; then
-    ./Revancify1/revancify1
+    ./revancify1/revancify11
     exit 0
 fi
 
@@ -31,7 +31,7 @@ Possible causes of error:
 fi
 
 if git clone --depth=1 https://github.com/Eddy00007/Revancify.git; then
-    "$HOME/revancify1/revancify1"
+    "$HOME/revancify1/revancify11"
 else
     echo -e "\e[1;31mInstall Failed !!\e[0m"
     echo "Please Try again"
