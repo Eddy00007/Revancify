@@ -28,8 +28,8 @@
         {
             "cli":
             {
-                "org": "revanced",
-                "repo": "revanced-cli"
+                "org": "Eddy00007",
+                "repo": "revanced-cli-4.6"
             },
             "patches":
             {
@@ -50,8 +50,8 @@
         {
             "cli":
             {
-                "org": "revanced",
-                "repo": "revanced-cli"
+                "org": "Eddy00007",
+                "repo": "revanced-cli-4.6"
             },
             "patches":
             {
