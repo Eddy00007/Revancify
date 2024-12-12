@@ -13,8 +13,8 @@ if [ -z "$TERMUX_VERSION" ]; then
     exit 1
 fi
 
-if [ -d "$HOME/Revancify" ]; then
-    ./Revancify/revancify
+if [ -d "$HOME/Revancify1" ]; then
+    ./Revancify1/revancify1
     exit 0
 fi
 

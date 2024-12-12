@@ -22,12 +22,12 @@ setEnv() {
 
 initialize() {
     internalStorage="/storage/emulated/0"
-    storagePath="$internalStorage/Revancify"
+    storagePath="$internalStorage/Revancify1"
     [ ! -d "$storagePath" ] && mkdir -p "$storagePath"
     [ ! -d apps ] && mkdir -p apps
     arch=$(getprop ro.product.cpu.abi)
-    repoDir="$HOME/Revancify"
-    header=(dialog --backtitle "Revancify | [Arch: $arch, Root: $root]" --no-shadow)
+    repoDir="$HOME/Revancify1"
+    header=(dialog --backtitle "Revancify1 | [Arch: $arch, Root: $root]" --no-shadow)
     envFile=config.cfg
     [ ! -f "apps/.appSize" ] && : > "apps/.appSize"
     userAgent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
@@ -104,7 +104,7 @@ getTools() {
     fetchToolsAPI || return 1
     if [ -e "$patchesSource-patches-$patchesLatest.jar" ] && [ -e "$patchesSource-patches-$patchesLatest.json" ] && [ -e "$cliSource-cli-$cliLatest.jar" ] && [ -e "$integrationsSource-integrations-$integrationsLatest.apk" ] && [ "$cliSize" == "$cliAvailableSize" ] && [ "$patchesSize" == "$patchesAvailableSize" ] && [ "$integrationsSize" == "$integrationsAvailableSize" ]; then
         if [ "$(bash "$repoDir/fetch_patches.sh" "$patchesSource" online "$storagePath")" == "error" ]; then
-            "${header[@]}" --msgbox "Tools are successfully downloaded but Apkmirror API is not accessible. So, patches are not successfully synced.\nRevancify may crash.\n\nChange your network." 12 45
+            "${header[@]}" --msgbox "Tools are successfully downloaded but Apkmirror API is not accessible. So, patches are not successfully synced.\nRevancify1 may crash.\n\nChange your network." 12 45
             return 1
         fi
         "${header[@]}" --msgbox "Tools are already downloaded !!\n\nPatches are successfully synced." 12 45
@@ -133,7 +133,7 @@ getTools() {
     if [ "$patchesUpdated" == true ]; then
         "${header[@]}" --infobox "Updating patches and options file..." 12 45
         if [ "$(bash "$repoDir/fetch_patches.sh" "$patchesSource" online "$storagePath")" == "error" ]; then
-            "${header[@]}" --msgbox "Tools are successfully downloaded but Apkmirror API is not accessible. So, patches are not successfully synced.\nRevancify may crash.\n\nChange your network." 12 45
+            "${header[@]}" --msgbox "Tools are successfully downloaded but Apkmirror API is not accessible. So, patches are not successfully synced.\nRevancify1 may crash.\n\nChange your network." 12 45
             return 1
         fi
         java -jar "$cliSource"-cli-*.jar options -ou -p "$storagePath/$source-options.json" "$patchesSource"-patches-*.jar &> /dev/null
@@ -317,7 +317,7 @@ initInstall() {
     then
         "${header[@]}" --infobox "Please Wait !!\nInstalling Patched $appName..." 12 45
         if ! su -mm -c "/system/bin/sh $repoDir/root_util.sh mount $pkgName $appName $appVer $sourceName" > /dev/null 2>&1; then
-            "${header[@]}" --msgbox "Installation Failed !!\nLogs saved to \"Internal-Storage/Revancify/install_log.txt\". Share the Install logs to developer." 12 45
+            "${header[@]}" --msgbox "Installation Failed !!\nLogs saved to \"Internal-Storage/Revancify1/install_log.txt\". Share the Install logs to developer." 12 45
             return 1
         else
             "${header[@]}" --msgbox "$appName installed Successfully !!" 12 45
@@ -360,7 +360,7 @@ refreshJson() {
         internet || return 1
         "${header[@]}" --infobox "Please Wait !!" 12 45
         if [ "$(bash "$repoDir/fetch_patches.sh" "$patchesSource" online "$storagePath")" == "error" ]; then
-            "${header[@]}" --msgbox "Oops !! Apkmirror API is not accessible. Patches are not successfully synced.\nRevancify may crash.\n\nChange your network." 12 45
+            "${header[@]}" --msgbox "Oops !! Apkmirror API is not accessible. Patches are not successfully synced.\nRevancify1 may crash.\n\nChange your network." 12 45
             return 1
         fi
     fi
@@ -629,7 +629,7 @@ patchApk() {
     tput civis
     sleep 1
     if [ ! -f "apps/$appName-$appVer-$sourceName.apk" ]; then
-        "${header[@]}" --msgbox "Oops, Patching failed !!\nLogs saved to \"Internal Storage/Revancify/patch_log.txt\". Share the Patchlog to developer." 12 45
+        "${header[@]}" --msgbox "Oops, Patching failed !!\nLogs saved to \"Internal Storage/Revancify1/patch_log.txt\". Share the Patchlog to developer." 12 45
         return 1
     fi
 }

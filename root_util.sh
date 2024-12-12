@@ -14,18 +14,18 @@ if [ "$1" = "unmount" ]; then
     am force-stop "$pkgName"
     rm "/data/adb/service.d/mount_revanced_$pkgName.sh"
     rm "/data/adb/post-fs-data.d/umount_revanced_$pkgName.sh"
-    rm -rf "/data/local/tmp/revancify/$pkgName.apk"
+    rm -rf "/data/local/tmp/revancify1/$pkgName.apk"
     grep -q "$pkgName" /proc/mounts && exit 1
     exit 0
 fi
 
-[ -d /data/local/tmp/revancify/ ] || mkdir -p /data/local/tmp/revancify/
+[ -d /data/local/tmp/revancify1/ ] || mkdir -p /data/local/tmp/revancify1/
 [ -d /data/adb/post-fs-data.d/ ] || mkdir -p /data/adb/post-fs-data.d/
 [ -d /data/adb/service.d/ ] || mkdir -p /data/adb/service.d/
 
 [ -e "/data/adb/post-fs-data.d/umount_revanced_$pkgName.sh" ] && rm "/data/adb/post-fs-data.d/umount_revanced_$pkgName.sh"
 [ -e "/data/adb/service.d/mount_revanced_$pkgName.sh" ] && rm "/data/adb/service.d/mount_revanced_$pkgName.sh"
-[ -e "/data/local/tmp/revancify/$pkgName.apk" ] && rm "/data/local/tmp/revancify/$pkgName.apk"
+[ -e "/data/local/tmp/revancify1/$pkgName.apk" ] && rm "/data/local/tmp/revancify1/$pkgName.apk"
 
 
 if ! (pm list packages | grep -q "$pkgName" && [ "$(dumpsys package "$pkgName" | sed -n '/versionName/s/.*=//p' | sed 's/ /./1p')" = "$appVer" ]); then
@@ -39,18 +39,18 @@ fi
 pm list packages | grep -q "$pkgName" || exit 1
 
 stockApp=$(pm path "$pkgName" | sed -n "/base/s/package://p")
-revancedApp="/data/local/tmp/revancify/$pkgName.apk"
+revancedApp="/data/local/tmp/revancify1/$pkgName.apk"
 
 am force-stop "$pkgName"
 pm clear --cache-only "$pkgName"
 
 {
     grep "$pkgName" /proc/mounts | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -vl
-    cp "apps/$appName-$appVer-$sourceName.apk" "/data/local/tmp/revancify/$pkgName.apk"
+    cp "apps/$appName-$appVer-$sourceName.apk" "/data/local/tmp/revancify1/$pkgName.apk"
     chmod -v 644 "$revancedApp" && chown -v system:system "$revancedApp"
     chcon -v u:object_r:apk_data_file:s0 "$revancedApp"
     mount -vo bind "$revancedApp" "$stockApp"
-} > /storage/emulated/0/Revancify/install_log.txt 2>&1
+} > /storage/emulated/0/revancify1/install_log.txt 2>&1
 
 am force-stop "$pkgName"
 pm clear --cache-only "$pkgName"

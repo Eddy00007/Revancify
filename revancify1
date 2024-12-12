@@ -3,11 +3,11 @@
 HOME=/data/data/com.termux/files/home
 BIN=/data/data/com.termux/files/usr/bin
 
-repo="$HOME/Revancify"
-cp "$repo/revancify" "$BIN/revancify" >/dev/null 2>&1
+repo="$HOME/Revancify1"
+cp "$repo/revancify" "$BIN/revancify1" >/dev/null 2>&1
 root=default
 online="Checking..."
-DATA="$HOME/revancify-data"
+DATA="$HOME/revancify1-data"
 [ ! -d $DATA ] && mkdir -p "$DATA"
 # shellcheck source=/dev/null
 source "$DATA/config.cfg" > /dev/null 2>&1
@@ -26,7 +26,7 @@ help() {
         IFS=","
         echo -e "\e[1;31mInvalid Argument(s) Passed: ${invalidArgs[*]}\n"
     fi
-    echo -e "revancify\n
+    echo -e "revancify1\n
 Usage: revancify [OPTION]\n
 Options:
 -n, --no-root     Run without SU permissions
@@ -87,7 +87,7 @@ checkdependencies() {
         if ping -c 1 google.com >/dev/null 2>&1; then
             installdependencies || (echo "Dependencies not installed !!" && exit 1)
         else
-            cp "$repo/revancify" "$BIN/revancify"
+            cp "$repo/revancify" "$BIN/revancify1"
             echo -e "Dependencies not installed !!\nRun again with internet connection."
             exit 1
         fi
@@ -128,7 +128,7 @@ checkrevancify() {
         n | N)
             echo "Removing revancify completely !!"
             sleep 0.5s
-            rm "$BIN/revancify"
+            rm "$BIN/revancify1"
             echo "Successfully Uninstalled revancify."
             exit 0
             ;;
